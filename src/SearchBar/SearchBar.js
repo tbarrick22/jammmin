@@ -10,16 +10,17 @@ function SearchBar() {
 	}
 
 	return (
-		<div>
+		<div className={styles.SearchBar}>
 			<input
 				id="search"
 				type="text"
-				placeholder="Search.."
+				placeholder="Enter a song, album, or artist"
 				value={search}
 				name="search"
 				onChange={handleSearchInput}
 			></input>
 			<h4>{search}</h4>
+			<button className={styles.SearchButton}>SEARCH</button>
 		</div>
 	);
 }

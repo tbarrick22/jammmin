@@ -3,7 +3,11 @@ import styles from "./SearchResults.module.css";
 /* <div className={styles.divStyle}></div> */
 
 function SearchResults() {
-	return;
+	return (
+		<div className={styles.SearchResults}>
+			{/* <!-- Add a TrackList component --> */}
+		</div>
+	);
 }
 
 export default SearchResults;
