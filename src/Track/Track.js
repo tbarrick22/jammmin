@@ -2,15 +2,23 @@ import React from "react";
 import styles from "./Track.module.css";
 /* <div className={styles.divStyle}></div> */
 
-function Track() {
+function Track(props) {
+	// TEST CODE - TO DELETE
+	// const testTrack = {
+	// 	name: "Test Track",
+	// 	artist: "Test Artist",
+	// 	album: "Test Album",
+	// };
 	return (
 		<div className={styles.Track}>
 			<div className={styles.TrackInformation}>
-				{/* <h3><!-- track name will go here --></h3> */}
+				<h3>{props.name}</h3>
 
-				{/* <p><!-- track artist will go here--> | <!-- track album will go here --></p> */}
+				<p>
+					{props.artist} | {props.album}
+				</p>
 			</div>
-			{/* <button class={styles.TrackAction}><!-- + or - will go here --></button> */}
+			<button className={styles.TrackAction}> + or - will go here</button>
 		</div>
 	);
 }
