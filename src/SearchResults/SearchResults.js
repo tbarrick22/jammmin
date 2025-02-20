@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./SearchResults.module.css";
+import Tracklist from "../TrackList/Tracklist";
 /* <div className={styles.divStyle}></div> */
 
-function SearchResults() {
+function SearchResults(props) {
+	const [results, setResults] = useState(props.resultSongs);
 	return (
 		<div className={styles.SearchResults}>
-			{/* <!-- Add a TrackList component --> */}
+			<Tracklist trackList={results} />
 		</div>
 	);
 }

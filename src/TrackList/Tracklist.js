@@ -5,28 +5,18 @@ import generateId from "../utilities";
 /* <div className={styles.divStyle}></div> */
 
 function Tracklist(props) {
-	// TEST CODE - TO DELETE - initialize empty list
-	// const testTrackList = [
-	// 	{
-	// 		id: generateId(),
-	// 		name: "Test Track1",
-	// 		artist: "Test Artist1",
-	// 		album: "Test Album1",
-	// 	},
-	// 	{
-	// 		id: generateId(),
-	// 		name: "Test Track2",
-	// 		artist: "Test Artist2",
-	// 		album: "Test Album2",
-	// 	},
-	// 	{
-	// 		id: generateId(),
-	// 		name: "Test Track3",
-	// 		artist: "Test Artist3",
-	// 		album: "Test Album3",
-	// 	},
-	// ];
 	const [tracks, setTracks] = useState(props.trackList);
+
+	// function to remove song from tracklist
+	const removeSong = (songIdToRemove) => {
+		setTracks((tracks) => {
+			return tracks.filter((track) => {
+				return track.id !== songIdToRemove;
+			});
+		});
+	};
+
+	// console.log("addSongToPlaylist in Tracklist:", addSongToPlaylist);
 
 	return (
 		<div className={styles.TrackList}>
@@ -34,9 +24,13 @@ function Tracklist(props) {
 			{tracks.map((track) => (
 				<Track
 					key={track.id}
+					id={track.id}
 					name={track.name}
 					artist={track.artist}
 					album={track.album}
+					isRemoval={track.isRemoval}
+					removeSong={removeSong}
+					addSongToPlaylist={props.addSongToPlaylist}
 				/>
 			))}
 		</div>

@@ -10,24 +10,50 @@ import generateId from "../utilities";
 
 function App() {
 	// TEST CODE DELETE LATER
-	const testTrackList = [
+	const testResultList = [
 		{
 			id: generateId(),
 			name: "Test Track1",
 			artist: "Test Artist1",
 			album: "Test Album1",
+			isRemoval: false,
 		},
 		{
 			id: generateId(),
 			name: "Test Track2",
 			artist: "Test Artist2",
 			album: "Test Album2",
+			isRemoval: false,
 		},
 		{
 			id: generateId(),
 			name: "Test Track3",
 			artist: "Test Artist3",
 			album: "Test Album3",
+			isRemoval: false,
+		},
+	];
+	const testPlayList = [
+		{
+			id: generateId(),
+			name: "Test Track1",
+			artist: "Test Artist1",
+			album: "Test Album1",
+			isRemoval: true,
+		},
+		{
+			id: generateId(),
+			name: "Test Track2",
+			artist: "Test Artist2",
+			album: "Test Album2",
+			isRemoval: true,
+		},
+		{
+			id: generateId(),
+			name: "Test Track3",
+			artist: "Test Artist3",
+			album: "Test Album3",
+			isRemoval: true,
 		},
 	];
 	return (
@@ -39,9 +65,8 @@ function App() {
 				<SearchBar />
 
 				<div className={styles.AppPlaylist}>
-					<Tracklist trackList={testTrackList} />
-					{/* <!-- Add a SearchResults component --> */}
-					{/* <!-- Add a Playlist component --> */}
+					<SearchResults resultSongs={testResultList} />
+					<Playlist addedSongs={testPlayList} />
 				</div>
 			</div>
 		</div>

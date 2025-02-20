@@ -1,14 +1,47 @@
 import React from "react";
 import styles from "./Track.module.css";
+import generateId from "../utilities";
 /* <div className={styles.divStyle}></div> */
 
 function Track(props) {
-	// TEST CODE - TO DELETE
-	// const testTrack = {
-	// 	name: "Test Track",
-	// 	artist: "Test Artist",
-	// 	album: "Test Album",
-	// };
+	// render action for if it is in results (add to playlist) or in playlist (remove)
+
+	const handleRemoveClick = () => {
+		// console.log(props);
+		props.removeSong(props.id);
+	};
+
+	const handleAddClick = () => {
+		// console.log(props);
+		props.addSongToPlaylist({
+			id: generateId(),
+			name: props.name,
+			artist: props.artist,
+			album: props.album,
+			isRemoval: true,
+		});
+	};
+
+	function renderAction() {
+		console.log(props);
+		if (props.isRemoval) {
+			return (
+				<button
+					className={styles.TrackAction}
+					onClick={handleRemoveClick}
+				>
+					-
+				</button>
+			);
+		} else {
+			return (
+				<button className={styles.TrackAction} onClick={handleAddClick}>
+					+
+				</button>
+			);
+		}
+	}
+	// console.log(props.addSongToPlaylist);
 	return (
 		<div className={styles.Track}>
 			<div className={styles.TrackInformation}>
@@ -18,7 +51,7 @@ function Track(props) {
 					{props.artist} | {props.album}
 				</p>
 			</div>
-			<button className={styles.TrackAction}> + or - will go here</button>
+			{renderAction()}
 		</div>
 	);
 }
