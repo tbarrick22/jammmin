@@ -4,12 +4,10 @@ import Tracklist from "../TrackList/Tracklist";
 /* <div className={styles.divStyle}></div> */
 
 function SearchResults(props) {
-	const [results, setResults] = useState(props.resultSongs);
-
 	return (
 		<div className={styles.SearchResults}>
 			<Tracklist
-				trackList={results}
+				trackList={props.resultSongs}
 				addTrackToPlaylist={props.addTrackToPlaylist}
 			/>
 		</div>

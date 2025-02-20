@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
 /* <div className={styles.divStyle}></div> */
 
-function SearchBar() {
+function SearchBar(props) {
 	const [search, setSearch] = useState("");
 
 	function handleSearchInput(e) {
 		setSearch(e.target.value);
 	}
+
+	// function to handle search feature
+	const handleSearchClick = () => {
+		// check the user put something in
+		if (search.length > 0) {
+			props.handleSearch(search);
+		} else {
+			return;
+		}
+	};
 
 	return (
 		<div className={styles.SearchBar}>
@@ -19,8 +29,9 @@ function SearchBar() {
 				name="search"
 				onChange={handleSearchInput}
 			></input>
-			<h4>{search}</h4>
-			<button className={styles.SearchButton}>SEARCH</button>
+			<button className={styles.SearchButton} onClick={handleSearchClick}>
+				SEARCH
+			</button>
 		</div>
 	);
 }

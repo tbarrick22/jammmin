@@ -4,61 +4,20 @@ import styles from "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-import Tracklist from "../TrackList/Tracklist";
-import Track from "../Track/Track";
 import generateId from "../utilities";
+import getAndExtractSongs from "../query";
 
 function App() {
-	// TEST CODE DELETE LATER
-	const testResultList = [
-		{
-			id: generateId(),
-			name: "Test Track1",
-			artist: "Test Artist1",
-			album: "Test Album1",
-			isRemoval: false,
-		},
-		{
-			id: generateId(),
-			name: "Test Track2",
-			artist: "Test Artist2",
-			album: "Test Album2",
-			isRemoval: false,
-		},
-		{
-			id: generateId(),
-			name: "Test Track3",
-			artist: "Test Artist3",
-			album: "Test Album3",
-			isRemoval: false,
-		},
-	];
-	const testPlayList = [
-		{
-			id: generateId(),
-			name: "Playlist Track1",
-			artist: "Test Artist1",
-			album: "Test Album1",
-			isRemoval: true,
-		},
-		{
-			id: generateId(),
-			name: "Playlist Track2",
-			artist: "Test Artist2",
-			album: "Test Album2",
-			isRemoval: true,
-		},
-		{
-			id: generateId(),
-			name: "Playlist Track3",
-			artist: "Test Artist3",
-			album: "Album3",
-			isRemoval: true,
-		},
-	];
+	// Manage playlist tracks and search results here
+	const [playlistTracks, setPlaylistTracks] = useState([]);
+	const [searchResults, setSearchResults] = useState([]);
 
-	// Manage playlist tracks here
-	const [playlistTracks, setPlaylistTracks] = useState(testPlayList);
+	// write function to set searchResults from query
+	const handleSearch = async (inputString) => {
+		const resultList = await getAndExtractSongs(inputString);
+		console.log(resultList);
+		setSearchResults(resultList);
+	};
 
 	// Write function to add tracks to playlist
 	function addTrackToPlaylist(song) {
@@ -85,7 +44,7 @@ function App() {
 	const clearPlaylist = () => {
 		if (playlistTracks.length > 0) {
 			setPlaylistTracks([]);
-			alert("Playlist sent to Spotify!\n(not really)");
+			alert("Playlist saved!\n(not really)");
 		}
 	};
 	return (
@@ -94,11 +53,11 @@ function App() {
 				Ja<span className={styles.highlight}>mmm</span>ing
 			</h1>
 			<div className={styles.App}>
-				<SearchBar />
+				<SearchBar handleSearch={handleSearch} />
 
 				<div className={styles.AppPlaylist}>
 					<SearchResults
-						resultSongs={testResultList}
+						resultSongs={searchResults}
 						addTrackToPlaylist={addTrackToPlaylist}
 					/>
 					<Playlist

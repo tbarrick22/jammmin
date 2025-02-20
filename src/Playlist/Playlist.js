@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Playlist.module.css";
 import Tracklist from "../TrackList/Tracklist";
-import generateId from "../utilities";
 /* <div className={styles.divStyle}></div> */
 
 function Playlist(props) {
@@ -30,7 +29,7 @@ function Playlist(props) {
 				removeTrack={props.removeTrack}
 			/>
 			<button className={styles.PlaylistSave} onClick={handleButtonClick}>
-				SAVE TO SPOTIFY (DOES NOT WORK)
+				SAVE PLAYLIST
 			</button>
 		</div>
 	);
