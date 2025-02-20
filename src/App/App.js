@@ -15,7 +15,7 @@ function App() {
 	// write function to set searchResults from query
 	const handleSearch = async (inputString) => {
 		const resultList = await getAndExtractSongs(inputString);
-		console.log(resultList);
+		// console.log(resultList);
 		setSearchResults(resultList);
 	};
 

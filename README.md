@@ -1,3 +1,26 @@
+# Jammmin Project
+
+The purpose of this project is to build a demo application which allows users to search for songs and add them to a playlist
+
+The main objective was for me to practice building a front-end application with React
+
+## Technologies used
+
+-   HTML
+-   CSS
+-   JavaScript
+-   React
+-   Node.js
+
+## Features
+
+Because I did not want to mess with my Spotify user account, I used the iTunes search API instead
+
+-   Search for songs using keywords
+-   Add you songs to a playlist
+-   Customize the name of your playlist
+-   Save the playlist (Did not add this feature - currently just clears your playlist)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
