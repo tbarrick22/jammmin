@@ -8,13 +8,13 @@ function Track(props) {
 
 	const handleRemoveClick = () => {
 		// console.log(props);
-		props.removeSong(props.id);
+		props.removeTrack(props.id);
 	};
 
 	const handleAddClick = () => {
 		// console.log(props);
-		props.addSongToPlaylist({
-			id: generateId(),
+		props.addTrackToPlaylist({
+			id: props.id,
 			name: props.name,
 			artist: props.artist,
 			album: props.album,
@@ -23,7 +23,7 @@ function Track(props) {
 	};
 
 	function renderAction() {
-		console.log(props);
+		// console.log(props);
 		if (props.isRemoval) {
 			return (
 				<button

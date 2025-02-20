@@ -5,9 +5,13 @@ import Tracklist from "../TrackList/Tracklist";
 
 function SearchResults(props) {
 	const [results, setResults] = useState(props.resultSongs);
+
 	return (
 		<div className={styles.SearchResults}>
-			<Tracklist trackList={results} />
+			<Tracklist
+				trackList={results}
+				addTrackToPlaylist={props.addTrackToPlaylist}
+			/>
 		</div>
 	);
 }
